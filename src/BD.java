@@ -32,7 +32,7 @@ public class BD {
 
 
             while(resultSet.next()) {
-                System.out.println(resultSet.getString("Nombre"));
+                System.out.println(resultSet.getMetaData());
             }
 
 
