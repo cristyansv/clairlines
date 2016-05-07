@@ -48,7 +48,6 @@ hs_err_pid*
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
-.idea/
 
 
 # JIRA plugin
@@ -58,6 +57,3 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
-.idea/modules.xml
-
-.idea/vcs.xml
