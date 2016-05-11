@@ -30,6 +30,16 @@ router.post('/query', function (req, res) {
   });
 });
 
+router.get("/getUserById/:id", function (req, res) {
+  connection.query("Select * from Pasajero where ID_pasajero = "+req.params.id, function(err, rows) {
+    if(err){
+      res.send(err);
+    }else {
+      res.send(rows);
+    }
+  });
+});
+
 
 
 
