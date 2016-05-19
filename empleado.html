@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Agregar Empleado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery-1.9.1"></script>
+    <script type="text/javascript" src="backend-local-java.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+
+    <style type="text/css">
+        .container-fluid{
+
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+
+
+
+        }
+
+        html{
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+        }
+        div img {
+            position: absolute;
+            top:  150;
+            right: 45.5%;
+
+        }
+    </style>
+    </head>
+    <body>
+    <div class="container-fluid">
+        <form class="form-horizontal">
+
+
+        <h1 class="text-left" style="color: ghostwhite">AGREGAR EMPLEADO </h1>
+
+
+        <div class="form-group">
+            <label for="aNombre" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-2">
+            <input id="aNombre" type="text" class="form-control" placeholder="Ingrese Nombre"/>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <label for="aApellido" class="col-sm-2 control-label" style="color: ghostwhite">Apellido</label>
+                <div class="col-sm-2">
+                    <input id="aApellido" type="text" class="form-control" placeholder="Ingrese Apellido"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aEmpleado" class="col-sm-2 control-label">Empleado ID</label>
+                <div class="col-sm-2">
+                    <input id="aEmpleado" type="text" class="form-control" placeholder="Ingrese ID Empleado"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aCedula" class="col-sm-2 control-label">Cedula</label>
+                <div class="col-sm-2">
+                    <input id="aCedula" type="text" class="form-control" placeholder="Ingrese el numero de cedula"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aCargo" class="col-sm-2 control-label">Cargo</label>
+                <div class="col-sm-2">
+                    <input id="aCargo" type="text" class="form-control" placeholder="Ingrese el cargo"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aTipo" class="col-sm-2 control-label">Tipo</label>
+                <div class="col-sm-2">
+                    <input id="aTipo" type="text" class="form-control" placeholder="Ingrese el tipo de cargo"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="aCategoria" class="col-sm-2 control-label">Categoria</label>
+                <div class="col-sm-2">
+                    <input id="aCategoria" type="text" class="form-control" placeholder="Ingrese la Categoria"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-info btn-lg">AGREGAR</button>
+            </div>
+
+                <div>
+                    <div class="text-center" class="" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-info btn-lg">CONSULTAR PASAJERO</button>
+
+                    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    </body>
+    </html>

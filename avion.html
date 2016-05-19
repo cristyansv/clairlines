@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Agregar Empleado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery-1.9.1"></script>
+    <script type="text/javascript" src="backend-local-java.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+
+    <style type="text/css">
+        .container-fluid{
+
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+
+
+
+        }
+
+        html{
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+        }
+
+        div img {
+            position: absolute;
+            top:  150;
+            right: 45.5%;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <form class="form-horizontal">
+
+        <img ALIGN="BOTTOM" src="https://lh3.googleusercontent.com/RXGyKSX0aamlqWGzorNYmrgHLMaR2QW4BcFSLizu_p8DS5L6ZDD5eabzdSWgrCezH_Qr=s169">
+
+        </img>
+
+        <h1 class="text-left" style="color: ghostwhite">AGREGAR AVION</h1>
+
+
+        <div class="form-group">
+            <label for="aAvion" class="col-sm-2 control-label">AVION ID</label>
+            <div class="col-sm-2">
+                <input id="aAvion" style type="text/css" class="form-control" placeholder="Ingrese el id del avion"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="aModelo" class="col-sm-2 control-label" >MODELO</label>
+            <div class="col-sm-2">
+                <form action="action_page.php">
+                    <select name="AVION">
+                        <option value="Airbus A321">Airbus A321</option>
+                        <option value="Airbus A320">Airbus A320</option>
+                        <option value="Airbus A330">Airbus A330</option>
+                        <option value="Airbus A318">Airbus A318</option>
+                        <option value="Airbus A190">Airbus A190</option>
+                        <option value="Embraer 190">Embraer 190</option>
+                        <option value="ATR 72">ATR 72</option>
+                        <option value="ATR 42">ATR 42</option>
+                    </select>
+                </input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aViaje" class="col-sm-2 control-label">ASIENTOS</label>
+            <div class="col-sm-2">
+                <input id="aViaje" type="text" class="form-control" placeholder="Ingrese el numero de asientos del avion"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="aDisponible" class="col-sm-2 control-label">DISPONIBILIDAD</label>
+            <div class="col-sm-2"
+            <form action="action_page.php">
+                <select name="Disponibilidad">
+                    <option value="Airbus A321">Disponible</option>
+                    <option value="Airbus A320">Mantenimiento</option>
+                    <option value="Airbus A330">No dispobible</option>
+                    <option value="Airbus A318">En Vuelo</option>
+                </select>
+                </input>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-info btn-lg">AGREGAR</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

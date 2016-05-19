@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title>Agregar Empleado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+    <link  rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery-1.9.1"></script>
+    <script type="text/javascript" src="backend-local-java.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+
+    <style type="text/css">
+        .container-fluid{
+
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+
+
+
+        }
+
+        html{
+            background-image: url("http://4.bp.blogspot.com/-YIgZuulsytc/UHIZPChPjkI/AAAAAAABK5g/elSfaIOKZ24/s1600/avion-despegando-de-la-pista-en-el-aeropuerto.jpg");
+            background-size: cover;
+        }
+
+        div img {
+            position: absolute;
+            top:  150;
+            right: 45.5%;
+
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <form class="form-horizontal">
+
+        <img ALIGN="BOTTOM" src="https://lh3.googleusercontent.com/RXGyKSX0aamlqWGzorNYmrgHLMaR2QW4BcFSLizu_p8DS5L6ZDD5eabzdSWgrCezH_Qr=s169">
+
+        </img>
+
+        <h1 class="text-left" style="color: ghostwhite">AGREGAR TRAYECTO </h1>
+
+
+        <div class="form-group">
+            <label for="aTrayectoid" class="col-sm-2 control-label">Trayecto ID</label>
+            <div class="col-sm-2">
+                <input id="aTrayectoid" style type="text/css" class="form-control" placeholder="Ingrese el id del trayecto"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aAvion" class="col-sm-2 control-label" >Avion ID</label>
+            <div class="col-sm-2">
+                <input id="aAvion" type="text" class="form-control" placeholder="Ingrese el id del avion"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aViaje" class="col-sm-2 control-label">Viaje ID</label>
+            <div class="col-sm-2">
+                <input id="aViaje" type="text" class="form-control" placeholder="Ingrese el id del viaje"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="aOrigen" class="col-sm-2 control-label" >Origen</label>
+            <div class="col-sm-2">
+                <input id="aOrigen" type="text" class="form-control" placeholder="Ingrese el origen"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label id="aDestino" class="col-sm-2 control-label" >Destino</label>
+            <div class="col-sm-2">
+                <input id="aDestino" type="text" class="form-control" placeholder="Ingrese el destino"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="aHoras" class="col-sm-2 control-label">Hora Salida</label>
+            <div class="col-sm-2">
+                <input id="aHoras" type="text" class="form-control" placeholder="HH:MM"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aLlegada" class="col-sm-2 control-label">Hora Llegada</label>
+            <div class="col-sm-2">
+                <input id="aLlegada" type="text" class="form-control" placeholder="HH:MM"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aFechas" class="col-sm-2 control-label">Fecha Salida</label>
+            <div class="col-sm-2">
+                <input id="aFechas" type="text" class="form-control" placeholder="DD/MM/YYYY"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="aHoral" class="col-sm-2 control-label">Hora Llegada</label>
+            <div class="col-sm-2">
+                <input id="aHoral" type="text" class="form-control" placeholder="DD/MM/YYYY"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-info btn-lg">AGREGAR</button>
+            </div>
+</div>
+</form>
+</body>
+</html>
