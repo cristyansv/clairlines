@@ -207,3 +207,55 @@ router.get("/getAeropuertoById/:id", function (req, res) {
         }
     });
 });
+
+
+router.get("/getAeropuertoByCiudad/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.get("/getEmpleadoBycedula/:id", function (req, res) {
+    connection.query("Select * from Empleado where cedula = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getPasajerBycedula/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getAeropuertoByCiudad/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getTarifaByIdviaje/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where idviaje = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
