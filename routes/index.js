@@ -174,3 +174,36 @@ router.post('/nuevoAeopuerto', function (req, res) {
 
 
 module.exports = router;
+
+
+router.get("/getEmpleadoById/:id", function (req, res) {
+    connection.query("Select * from Empleado where idempleado = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.get("/getAvionById/:id", function (req, res) {
+    connection.query("Select * from Avion where idavion = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.get("/getAeropuertoById/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where idaeropuerto = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
