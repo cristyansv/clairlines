@@ -100,12 +100,8 @@ router.post('/nuevoAvion', function (req, res) {
   var disponibilidad = req.body.disponibilidad;
   var modelo = req.body.modelo;
 
-  var id = 99;
 
-  console.log(nroasientos, disponibilidad, modelo);
-
-
-  var consulta = "insert into Avion (idavion, nroasientos, disponibilidad, modelo) values ("+idavion+", "+nroasientos+","+disponibilidad+","+modelo+")";
+  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+idavion+", "+nroasientos+","+disponibilidad+","+modelo+")";
 
 
   connection.query(consulta, function(err, rows) {
