@@ -17,46 +17,13 @@ var Routes = (
             <Router history={hashHistory}>
                 <Route path="/" component={Index}/>
                 <Route path="/aviones" component={Aviones}/>
-            </Router>
-        </div>
-    </MuiThemeProvider>
-);
-
-var Routes = (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div>
-            <Bar />
-            <Router history={hashHistory}>
-                <Route path="/" component={Index}/>
                 <Route path="/empleados" component={Empleados}/>
-            </Router>
-        </div>
-    </MuiThemeProvider>
-);
-
-
-var Routes = (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div>
-            <Bar />
-            <Router history={hashHistory}>
-                <Route path="/" component={Index}/>
                 <Route path="/pasajeros" component={Pasajeros}/>
-            </Router>
-        </div>
-    </MuiThemeProvider>
-);
-
-var Routes = (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div>
-            <Bar />
-            <Router history={hashHistory}>
-                <Route path="/" component={Index}/>
                 <Route path="/aeropuertos" component={Aeropuertos}/>
             </Router>
         </div>
     </MuiThemeProvider>
 );
+
 
 export default Routes;
