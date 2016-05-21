@@ -5,8 +5,10 @@ import Aviones from './components/Aviones.jsx';
 import Empleados from './components/Empleados.jsx';
 import Pasajeros from './components/Pasajeros.jsx';
 import Aeropuertos from './components/Aeropuertos.jsx';
-
-
+import Tiquetes from './components/Tiquetes.jsx';
+import Viajes from './components/Viajes.jsx';
+import Trayectos from './components/Trayectos.jsx';
+import PersonalaBordo from './components/PersonalaBordo.jsx';
 
 
 
@@ -27,6 +29,10 @@ var Routes = (
                 <Route path="/empleados" component={Empleados}/>
                 <Route path="/pasajeros" component={Pasajeros}/>
                 <Route path="/aeropuertos" component={Aeropuertos}/>
+                <Route path="/viajes" component={Viajes}/>
+                <Route path="/tiquetes" component={Tiquetes}/>
+                <Route path="/trayectos" component={Trayectos}/>
+                <Route path="/personalabordo" component={PersonalaBordo}/>
             </Router>
         </div>
     </MuiThemeProvider>

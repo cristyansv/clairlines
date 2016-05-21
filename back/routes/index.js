@@ -82,6 +82,50 @@ router.get("/getAeropuertos", function (req, res) {
     });
 });
 
+
+router.get("/getPersonal_a_Bordo", function (req, res) {
+    connection.query("Select * from Personal_a_bordo", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getTiquetes", function (req, res) {
+    connection.query("Select * from Tiquete", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.get("/getTrayectos", function (req, res) {
+    connection.query("Select * from Trayecto", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.get("/getViajes", function (req, res) {
+    connection.query("Select * from Viaje", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
 router.get("/getEmployeeById/:id", function (req, res) {
   connection.query("Select * from Empleado where ID_pasajero = "+req.params.id, function(err, rows) {
     if(err){
