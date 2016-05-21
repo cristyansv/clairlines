@@ -2,6 +2,13 @@ import React from 'react';
 import { Router, Route, hashHistory } from 'react-router'
 import Index from './components/Index.jsx';
 import Aviones from './components/Aviones.jsx';
+import Empleados from './components/Empleados.jsx';
+import Pasajeros from './components/Pasajeros.jsx';
+import Aeropuertos from './components/Aeropuertos.jsx';
+
+
+
+
 
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
