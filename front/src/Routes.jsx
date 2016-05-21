@@ -47,4 +47,16 @@ var Routes = (
     </MuiThemeProvider>
 );
 
+var Routes = (
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div>
+            <Bar />
+            <Router history={hashHistory}>
+                <Route path="/" component={Index}/>
+                <Route path="/aeropuertos" component={Aeropuertos}/>
+            </Router>
+        </div>
+    </MuiThemeProvider>
+);
+
 export default Routes;
