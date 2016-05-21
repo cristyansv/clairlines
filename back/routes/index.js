@@ -72,6 +72,16 @@ router.get("/getPasajeros", function (req, res) {
 });
 
 
+router.get("/getAeropuertos", function (req, res) {
+    connection.query("Select * from Aeropuerto", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
 router.get("/getEmployeeById/:id", function (req, res) {
   connection.query("Select * from Empleado where ID_pasajero = "+req.params.id, function(err, rows) {
     if(err){
