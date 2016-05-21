@@ -40,6 +40,16 @@ router.get("/getUserById/:id", function (req, res) {
   });
 });
 
+router.get("/getAviones", function (req, res) {
+    connection.query("Select * from Avion", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
 
 
 router.get("/getEmployeeById/:id", function (req, res) {
