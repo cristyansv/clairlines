@@ -85,3 +85,5 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
+
+front/public/js/main.js
