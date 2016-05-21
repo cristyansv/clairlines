@@ -24,7 +24,7 @@ class Empleados extends React.Component {
 
     render() {
 
-        var aviones = this.state.empleados.map(function (empleado) {
+        var empleados= this.state.empleados.map(function (empleado) {
             return (
                 <div>
                     <p>Id: {empleado.idempleado}</p>

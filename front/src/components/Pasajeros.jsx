@@ -1,6 +1,8 @@
 /**
  * Created by Lauramv21 on 5/21/16.
  */
+
+import React from 'react';
 var http = require('../services/http');
 
 class Pasajeros extends React.Component {
