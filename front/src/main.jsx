@@ -1,6 +1,10 @@
 import React from 'react';
-import ReactDOM from'react-dom';
+import ReactDOM from 'react-dom';
+import Routes from './Routes.jsx'
 
-import Index from './components/Index.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-ReactDOM.render(<Index />, document.getElementById('App'));
+
+injectTapEventPlugin();
+
+ReactDOM.render(Routes, document.getElementById('App'));
