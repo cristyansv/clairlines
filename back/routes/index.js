@@ -83,7 +83,7 @@ router.get("/getAeropuertos", function (req, res) {
 });
 
 
-router.get("/getPersonal_a_Bordo", function (req, res) {
+router.get("/getPersonalabordo", function (req, res) {
     connection.query("Select * from Personal_a_bordo", function(err, rows) {
         if(err){
             res.send(err);
