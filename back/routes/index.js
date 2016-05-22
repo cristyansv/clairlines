@@ -270,7 +270,8 @@ router.post('/nuevoEmpleado', function (req, res) {
   console.log(nombre, cedula, apellido, cargo, tipo, categoria);
 
 
-  var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) values ("+idempleado+", "+nombre+","+cedula+","+apellido+", "+cargo+", "+tipo+", "+categoria+")";
+  var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) " +
+      " values ('"+idempleado+"',' "+nombre+"','"+cedula+"','"+apellido+"',' "+cargo+"', '"+tipo+"', '"+categoria+"')";
 
 
   connection.query(consulta, function(err, rows) {
@@ -298,7 +299,7 @@ router.post('/nuevoAeopuerto', function (req, res) {
   console.log(nombreaeropuerto, ciudad);
 
 
-  var consulta = "insert into Aeropuerto (idearopuerto, nombreaeropuerto, ciudad) values ("+idaeropuerto+", "+nombreaeropuerto+","+ciudad+")";
+  var consulta = "insert into Aeropuerto (idearopuerto, nombreaeropuerto, ciudad) values ('"+idaeropuerto+"',' "+nombreaeropuerto+"','"+ciudad+"')";
 
 
   connection.query(consulta, function(err, rows) {
@@ -322,7 +323,7 @@ router.post('/nuevoPersonal_a_bordo', function (req, res) {
     console.log(idempleado,idtrayecto);
 
 
-    var consulta = "insert into Personal_a_bordo (idempleado, idtrayecto) values ("+idempleado+", "+idtrayecto+")";
+    var consulta = "insert into Personal_a_bordo (idempleado, idtrayecto) values ('"+idempleado+"', '"+idtrayecto+"')";
 
 
     connection.query(consulta, function(err, rows) {
@@ -350,7 +351,7 @@ router.post('/nuevoTiquete', function (req, res) {
     console.log(idtiquete,precio,idpasajero,idtrayecto);
 
 
-    var consulta = "insert into Tiquete (idtiquete, precio, idpasajero, idtrayecto) values ("+idtiquete+", "+precio+", "+idpasajero+",, "+idtrayecto+")";
+    var consulta = "insert into Tiquete (idtiquete, precio, idpasajero, idtrayecto) values ('"+idtiquete+"', '"+precio+"', '"+idpasajero+",' "+idtrayecto+"')";
 
 
     connection.query(consulta, function(err, rows) {
@@ -382,7 +383,7 @@ router.post('/nuevoTrayecto', function (req, res) {
 
 
     var consulta = "insert into Trayecto (idtrayectp, idavion, idpasajero, horasalida, fechasalida, horallegada, fechallegada)" +
-        " values ("+idtrayecto+", "+idavion+", "+idviaje+","+horasalida+","+fechasalida+","+horallegada+","+fechallegada+")";
+        " values ('"+idtrayecto+"', '"+idavion+"', '"+idviaje+"','"+horasalida+"','"+fechasalida+"','"+horallegada+"','"+fechallegada+"')";
 
 
     connection.query(consulta, function(err, rows) {
@@ -413,7 +414,8 @@ router.post('/nuevoViaje', function (req, res) {
     console.log(idviaje,idaeropuertoorigen,idaeropuertodestino,tarifa);
 
 
-    var consulta = "insert into Viaje (idviaje, idaeropuertoorigen, idaeropuertodestino, tarifa) values ("+idviaje+", "+idaeropuertoorigen+", "+idaeropuertoorigen+",, "+tarifa+")";
+    var consulta = "insert into Viaje (idviaje, idaeropuertoorigen, idaeropuertodestino, tarifa) " +
+        " values ('"+idviaje+"',' "+idaeropuertoorigen+"', '"+idaeropuertoorigen+"',,' "+tarifa+"')";
 
 
     connection.query(consulta, function(err, rows) {
