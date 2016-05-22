@@ -30,15 +30,6 @@ router.post('/query', function (req, res) {
   });
 });
 
-router.get("/getUserById/:id", function (req, res) {
-  connection.query("Select * from Pasajero where ID_pasajero = "+req.params.id, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
-});
 
 router.get("/getAviones", function (req, res) {
     connection.query("Select * from Avion", function(err, rows) {
@@ -126,14 +117,14 @@ router.get("/getViajes", function (req, res) {
 });
 
 
-router.get("/getEmployeeById/:id", function (req, res) {
-  connection.query("Select * from Empleado where ID_pasajero = "+req.params.id, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
+router.get("/getCargos", function (req, res) {
+    connection.query("Select * from Cargos", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
 
@@ -143,8 +134,6 @@ router.post('/nuevoPasajero', function (req, res) {
 
   var nombre = req.body.nombre;
   var cedula = req.body.cedula;
-
-
 
 
   var consulta = "insert into Pasajero (Nombre, Cedula) values ('"+nombre+"','"+cedula+"')";
@@ -159,9 +148,6 @@ router.post('/nuevoPasajero', function (req, res) {
     }
   });
 });
-
-
-
 
 module.exports = router;
 
@@ -311,7 +297,7 @@ router.post('/nuevoAeropuerto', function (req, res) {
 
 module.exports = router;
 
-router.post('/nuevoPersonal_a_bordo', function (req, res) {
+router.post('/nuevoPersonalabordo', function (req, res) {
 
 
     var idempleado = req.body.idempleado;
@@ -321,7 +307,7 @@ router.post('/nuevoPersonal_a_bordo', function (req, res) {
     console.log(idempleado,idtrayecto);
 
 
-    var consulta = "insert into Personal_a_bordo (idempleado, idtrayecto) values ("+idempleado+", "+idtrayecto+")";
+    var consulta = "insert into Personalabordo (idempleado, idtrayecto) values ("+idempleado+", "+idtrayecto+")";
 
 
     connection.query(consulta, function(err, rows) {
@@ -335,6 +321,8 @@ router.post('/nuevoPersonal_a_bordo', function (req, res) {
 
 
 module.exports = router;
+
+
 
 router.post('/nuevoTiquete', function (req, res) {
 
@@ -363,6 +351,8 @@ router.post('/nuevoTiquete', function (req, res) {
 
 
 module.exports = router;
+
+
 
 router.post('/nuevoTrayecto', function (req, res) {
 
@@ -393,6 +383,7 @@ router.post('/nuevoTrayecto', function (req, res) {
     });
 });
 
+module.exports = router;
 
 
 
@@ -496,6 +487,16 @@ router.get("/getAeropuertoById/:id", function (req, res) {
     });
 });
 
+
+router.get("/getCargoById/:id", function (req, res) {
+    connection.query("Select cargo from Cargo where id = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
 
 router.get("/getAeropuertoByCiudad/:id" , function (req, res) {
     connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
@@ -652,5 +653,3 @@ router.get("/getTarifaByIdviaje/:id", function (req, res) {
         }
     });
 });
-
-module.exports = router;
