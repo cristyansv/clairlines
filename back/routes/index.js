@@ -84,7 +84,7 @@ router.get("/getAeropuertos", function (req, res) {
 
 
 router.get("/getPersonalabordo", function (req, res) {
-    connection.query("Select * from Personal_a_bordo", function(err, rows) {
+    connection.query("Select * from Personalabordo", function(err, rows) {
         if(err){
             res.send(err);
         }else {
