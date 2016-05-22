@@ -175,7 +175,7 @@ router.post('/nuevoAvion', function (req, res) {
   var modelo = req.body.modelo;
 
 
-  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+idavion+", "+nroasientos+","+disponibilidad+","+modelo+")";
+  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+nroasientos+","+disponibilidad+","+modelo+")";
 
 
   connection.query(consulta, function(err, rows) {
@@ -289,7 +289,7 @@ router.get("/getAeropuertoById/:id", function (req, res) {
 });
 
 
-router.get("/getAeropuertoByCiudad/:id", function (req, res) {
+router.get("/getAeropuertoByCiudad/:id" , function (req, res) {
     connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
         if(err){
             res.send(err);
@@ -310,7 +310,7 @@ router.get("/getEmpleadoBycedula/:id", function (req, res) {
     });
 });
 
-router.get("/getPasajerBycedula/:id", function (req, res) {
+router.get("/getPasajeroBycedula/:id", function (req, res) {
     connection.query("Select * from Aeropuerto where ciudad = "+req.params.id, function(err, rows) {
         if(err){
             res.send(err);
