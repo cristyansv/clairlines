@@ -54,7 +54,7 @@ class Viajes extends React.Component {
 
         var viajes = this.state.viajes.map(function (viaje) {
             return (
-                <TableRow>
+                <TableRow key={viaje.idviaje}>
                     <TableRowColumn>{viaje.idviaje}</TableRowColumn>
                     <TableRowColumn>{viaje.idaeropuertoorigen}</TableRowColumn>
                     <TableRowColumn>{viaje.idaeropuertodestino}</TableRowColumn>

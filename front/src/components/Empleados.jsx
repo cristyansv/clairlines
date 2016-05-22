@@ -57,7 +57,7 @@ class Empleados extends React.Component {
 
         var empleados= this.state.empleados.map(function (empleado) {
             return (
-                <TableRow>
+                <TableRow key={empleado.idempleado}>
                     <TableRowColumn>{empleado.idempleado}</TableRowColumn>
                     <TableRowColumn>{empleado.cedula}</TableRowColumn>
                     <TableRowColumn>{empleado.nombre}</TableRowColumn>

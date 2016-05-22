@@ -63,7 +63,7 @@ class Pasajeros extends React.Component {
 
         var pasajeros = this.state.pasajeros.map(function (pasajero) {
             return (
-                <TableRow>
+                <TableRow key={pasajero.idpasajero}>
                     <TableRowColumn>{pasajero.idpasajero}</TableRowColumn>
                     <TableRowColumn>{pasajero.nombre}</TableRowColumn>
                     <TableRowColumn>{pasajero.cedula}</TableRowColumn>

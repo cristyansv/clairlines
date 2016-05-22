@@ -54,7 +54,7 @@ class Trayectos extends React.Component {
             return (
 
 
-                <TableRow>
+                <TableRow key={trayecto.idtrayecto}>
                     <TableRowColumn>{trayecto.idtrayecto}</TableRowColumn>
                     <TableRowColumn>{trayecto.idavion}</TableRowColumn>
                     <TableRowColumn>{trayecto.idviaje}</TableRowColumn>
