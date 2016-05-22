@@ -250,7 +250,127 @@ router.post('/nuevoAeopuerto', function (req, res) {
   });
 });
 
+module.exports = router;
 
+router.post('/nuevoPersonal_a_bordo', function (req, res) {
+
+
+    var idempleado = req.body.idempleado;
+    var idtrayecto = req.body.idtrayecto;
+
+
+    var id = 99;
+
+    console.log(idempleado,idtrayecto);
+
+
+    var consulta = "insert into Personal_a_bordo (idempleado, idtrayecto) values ("+idempleado+", "+idtrayecto+")";
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+module.exports = router;
+
+router.post('/nuevoTiquete', function (req, res) {
+
+
+    var idtiquete = req.body.idtiquete;
+    var precio= req.body.precio;
+    var idpasajero= req.body.idpasajero;
+    var idtrayecto= req.body.idtrayecto;
+
+
+
+    var id = 99;
+
+    console.log(idtiquete,precio,idpasajero,idtrayecto);
+
+
+    var consulta = "insert into Tiquete (idtiquete, precio, idpasajero, idtrayecto) values ("+idtiquete+", "+precio+", "+idpasajero+",, "+idtrayecto+")";
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+module.exports = router;
+
+router.post('/nuevoTrayecto', function (req, res) {
+
+
+    var idtrayecto = req.body.idtrayecto;
+    var idavion= req.body.idavion;
+    var idviaje= req.body.idviaje;
+    var horasalida= req.body.horasalida;
+    var fechasalida= req.body.fechasalida;
+    var horallegada= rq.body.horallegada;
+    var fechallegada=rq.body.fechallegada;
+
+
+
+
+    var id = 99;
+
+    console.log(idtrayecto,idavion,idviaje,horasalida,fechasalida,horallegada,fechallegada);
+
+
+    var consulta = "insert into Trayecto (idtrayectp, idavion, idpasajero, horasalida, fechasalida, horallegada, fechallegada)" +
+        " values ("+idtrayecto+", "+idavion+", "+idviaje+","+horasalida+","+fechasalida+","+horallegada+","+fechallegada+")";
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+module.exports = router;
+
+
+router.post('/nuevoViaje', function (req, res) {
+
+
+    var idviaje = req.body.idviaje;
+    var idaeropuertoorigen= req.body.idaeropuertoorigen;
+    var idaeropuertodestino= req.body.idaeropuertodestino;
+    var tarifa= req.body.tarifa;
+
+
+
+    var id = 99;
+
+    console.log(idviaje,idaeropuertoorigen,idaeropuertodestino,tarifa);
+
+
+    var consulta = "insert into Viaje (idviaje, idaeropuertoorigen, idaeropuertodestino, tarifa) values ("+idviaje+", "+idaeropuertoorigen+", "+idaeropuertoorigen+",, "+tarifa+")";
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
 
 
 module.exports = router;
@@ -258,6 +378,46 @@ module.exports = router;
 
 router.get("/getEmpleadoById/:id", function (req, res) {
     connection.query("Select * from Empleado where idempleado = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getPasajeroById/:id", function (req, res) {
+    connection.query("Select * from Pasajero where idpasajero = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getTiqueteById/:id", function (req, res) {
+    connection.query("Select * from Tiquete where idtiquete = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getTrayectoById/:id", function (req, res) {
+    connection.query("Select * from Trayecto where idetrayecto = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getViajeById/:id", function (req, res) {
+    connection.query("Select * from Viaje where idviaje = "+req.params.id, function(err, rows) {
         if(err){
             res.send(err);
         }else {
@@ -298,6 +458,40 @@ router.get("/getAeropuertoByCiudad/:id", function (req, res) {
         }
     });
 });
+
+router.get("/getEmpleadoByNombreAeropuerto/:id", function (req, res) {
+    connection.query("Select * from Aeropuerto where nombreaeropuerto = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getAvionByNroasientos/:id", function (req, res) {
+    connection.query("Select * from Avion where nroasientos = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+router.get("/getAvionByNroasientos/:id", function (req, res) {
+    connection.query("Select * from Avion where nroasientos = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+
+
 
 
 router.get("/getEmpleadoBycedula/:id", function (req, res) {
