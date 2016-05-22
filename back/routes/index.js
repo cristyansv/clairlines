@@ -136,21 +136,49 @@ router.get("/getEmployeeById/:id", function (req, res) {
   });
 });
 
+router.post('/nuevoEmpleado', function (req, res) {
+
+
+    var nombre = req.body.nombre;
+    var cedula = req.body.cedula;
+    var apellido = req.body.apellido;
+    var cargo = req.body.cargo;
+    var tipo = req.body.tipo;
+    var categoria = req.body.categoria;
+
+
+    var consulta = "insert into Empleado (nombre, cedula, apellido, cargo, tipo, categoria) " +
+        "values ('"+nombre+"','"+cedula+"','"+apellido+"', "+cargo+", "+tipo+", "+categoria+")";
+
+    console.log(consulta);
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+
+
+module.exports = router;
+
 
 
 router.post('/nuevoPasajero', function (req, res) {
 
 
-  var nombre = req.body.nombre;
-  var cedula = req.body.cedula;
-
-  var id = 99;
-
-  console.log(nombre, cedula);
+  var nombre = req.body.cedula;
+  var cedula = req.body.nombre;
 
 
-  var consulta = "insert into Pasajero (ID_pasajero, Nombre, Cedula) values ("+id+","+nombre+","+cedula+")";
+  var consulta = "insert into Pasajero (nombre, cedula)" +  "values ('"+nombre+"','"+cedula+"')";
 
+    console.log(consulta);
 
   connection.query(consulta, function(err, rows) {
     if(err){
@@ -257,36 +285,7 @@ router.post('/activar', function (req, res) {
 module.exports = router;
 
 
-router.post('/nuevoEmpleado', function (req, res) {
 
-
-  var nombre = req.body.nombre;
-  var cedula = req.body.cedula;
-  var apellido = req.body.apellido;
-  var cargo = req.body.cargo;
-  var tipo = req.body.tipo;
-  var categoria = req.body.categoria;
-
-
-  var consulta = "insert into Empleado (nombre, cedula, apellido, cargo, tipo, categoria) " +
-      "values ('"+nombre+"','"+cedula+"','"+apellido+"', "+cargo+", "+tipo+", "+categoria+")";
-
-    console.log(consulta);
-
-
-  connection.query(consulta, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
-});
-
-
-
-
-module.exports = router;
 
 
 router.post('/nuevoAeopuerto', function (req, res) {
