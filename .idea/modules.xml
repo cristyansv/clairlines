@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/clairlines.iml" filepath="$PROJECT_DIR$/.idea/clairlines.iml" />
       <module fileurl="file://$PROJECT_DIR$/clairlines.iml" filepath="$PROJECT_DIR$/clairlines.iml" />
     </modules>
   </component>
