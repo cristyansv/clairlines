@@ -1,9 +1,8 @@
-/**
- * Created by Lauramv21 on 5/21/16.
- */
 import React from 'react';
-
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import {Link} from 'react-router';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
@@ -18,7 +17,7 @@ var style = {
 
 var titleStyle = {
     color: "white",
-    fontWeigth: 100,
+    fontWeight: 100,
     fontSize: "50px"
 };
 
@@ -27,6 +26,9 @@ var containerStyle = {
     padding: "10px"
 };
 
+var buttonStyle ={
+    marginTop: "20px"
+};
 
 class Trayectos extends React.Component {
 
@@ -88,6 +90,9 @@ class Trayectos extends React.Component {
                         </TableBody>
                     </Table>
                 </Paper>
+                <Link to="/nuevotrayecto">
+                    <RaisedButton label="Agregar Trayecto" primary={true} style={buttonStyle} />
+                </Link>
             </div>
         )
     }

@@ -9,11 +9,12 @@ import Aeropuertos from './components/Aeropuertos.jsx';
 import Tiquetes from './components/Tiquetes.jsx';
 import Viajes from './components/Viajes.jsx';
 import Trayectos from './components/Trayectos.jsx';
-import PersonalaBordo from './components/PersonalaBordo.jsx';
 
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import NuevoTrayecto from './components/NuevoTrayecto.jsx';
 
 import Bar from './components/Bar.jsx';
 
@@ -31,7 +32,7 @@ var Routes = (
                 <Route path="/viajes" component={Viajes}/>
                 <Route path="/tiquetes" component={Tiquetes}/>
                 <Route path="/trayectos" component={Trayectos}/>
-                <Route path="/personalabordo" component={PersonalaBordo}/>
+                <Route path="/nuevotrayecto" component={NuevoTrayecto} />
             </Router>
         </div>
     </MuiThemeProvider>
