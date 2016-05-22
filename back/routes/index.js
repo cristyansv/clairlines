@@ -288,17 +288,16 @@ router.post('/nuevoEmpleado', function (req, res) {
 module.exports = router;
 
 
-router.post('/nuevoAeopuerto', function (req, res) {
+router.post('/nuevoAeropuerto', function (req, res) {
+
+    var id = req.body.id;
+    var nombre = req.body.nombre;
+    var ciudad = req.body.ciudad;
 
 
-  var nombreaeropuerto = req.body.nombreaeropuerto;
-  var ciudad = req.body.ciudad;
+  var consulta = "insert into Aeropuerto (idaeropuerto, nombreaeropuerto, ciudad) values ('"+id+"', '"+nombre+"','"+ciudad+"')";
 
-
-  console.log(nombreaeropuerto, ciudad);
-
-
-  var consulta = "insert into Aeropuerto (idearopuerto, nombreaeropuerto, ciudad) values ("+idaeropuerto+", "+nombreaeropuerto+","+ciudad+")";
+    console.log(consulta);
 
 
   connection.query(consulta, function(err, rows) {
