@@ -72,7 +72,7 @@ class Aviones extends React.Component {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHeaderColumn>Id</TableHeaderColumn>
+                                <TableHeaderColumn>ID</TableHeaderColumn>
                                 <TableHeaderColumn>Modelo</TableHeaderColumn>
                                 <TableHeaderColumn>Estado</TableHeaderColumn>
                                 <TableHeaderColumn>Asientos</TableHeaderColumn>

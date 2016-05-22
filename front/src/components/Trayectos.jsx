@@ -3,7 +3,30 @@
  */
 import React from 'react';
 
+import Paper from 'material-ui/Paper';
+
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+
 var http = require('../services/http');
+
+var style = {
+    width: "1000px",
+    marginLeft: "auto",
+    marginRight: "auto"
+};
+
+
+var titleStyle = {
+    color: "white",
+    fontWeigth: 100,
+    fontSize: "50px"
+};
+
+
+var containerStyle = {
+    padding: "10px"
+};
+
 
 class Trayectos extends React.Component {
 
@@ -29,22 +52,42 @@ class Trayectos extends React.Component {
 
         var trayectos = this.state.trayectos.map(function (trayecto) {
             return (
+
+
                 <div>
-                    <p>Id: {trayecto.idtrayecto}</p>
-                    <p>Avion: {trayecto.idavion}</p>
-                    <p>Viaje: {trayecto.idviaje}</p>
-                    <p>Hora salida: {trayecto.horasalida}</p>
-                    <p>Fecha salida: {trayecto.fechasalida}</p>
-                    <p>Hora llegada: {trayecto.horallegada}</p>
-                    <p>Fecha llegada: {trayecto.fechallegada}</p>
+                    <TableRow>{trayecto.idtrayecto}</TableRow>
+                    <TableRow>{trayecto.idavion}</TableRow>
+                    <TableRow>{trayecto.idviaje}</TableRow>
+                    <TableRow>{trayecto.horasalida}</TableRow>
+                    <TableRow>{trayecto.fechasalida}</TableRow>
+                    <TableRow>{trayecto.horallegada}</TableRow>
+                    <TableRow>{trayecto.fechallegada}</TableRow>
                 </div>
             )
         });
 
 
         return (
-            <div>
-                {trayectos}
+            <div style={style}>
+                <h1 style={titleStyle}>Pasajeros</h1>
+                <Paper style={containerStyle} zDepth={2}>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHeaderColumn>ID</TableHeaderColumn>
+                                <TableHeaderColumn>Avión</TableHeaderColumn>
+                                <TableHeaderColumn>Viaje</TableHeaderColumn>
+                                <TableHeaderColumn>Hora salida</TableHeaderColumn>
+                                <TableHeaderColumn>Fecha salida</TableHeaderColumn>
+                                <TableHeaderColumn>Hora llegada</TableHeaderColumn>
+                                <TableHeaderColumn>Fecha llegada</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {trayectos}
+                        </TableBody>
+                    </Table>
+                </Paper>
             </div>
         )
     }

@@ -79,9 +79,9 @@ class Pasajeros extends React.Component {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHeaderColumn>Id</TableHeaderColumn>
+                                <TableHeaderColumn>ID</TableHeaderColumn>
                                 <TableHeaderColumn>Nombre</TableHeaderColumn>
-                                <TableHeaderColumn>Cedula</TableHeaderColumn>
+                                <TableHeaderColumn>Cédula</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody>

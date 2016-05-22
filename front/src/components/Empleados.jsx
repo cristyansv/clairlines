@@ -77,13 +77,13 @@ class Empleados extends React.Component {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHeaderColumn>Id</TableHeaderColumn>
-                                <TableHeaderColumn>Cedula</TableHeaderColumn>
+                                <TableHeaderColumn>ID</TableHeaderColumn>
+                                <TableHeaderColumn>Cédula</TableHeaderColumn>
                                 <TableHeaderColumn>Nombre</TableHeaderColumn>
                                 <TableHeaderColumn>Apellido</TableHeaderColumn>
                                 <TableHeaderColumn>Cargo</TableHeaderColumn>
                                 <TableHeaderColumn>Tipo</TableHeaderColumn>
-                                <TableHeaderColumn>Categoria</TableHeaderColumn>
+                                <TableHeaderColumn>Categoría</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
