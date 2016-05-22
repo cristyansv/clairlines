@@ -20,7 +20,7 @@ var style = {
 
 var titleStyle = {
     color: "white",
-    fontWeigth: 100,
+    fontWeight: 100,
     fontSize: "50px"
 };
 
@@ -224,9 +224,7 @@ class Empleados extends React.Component {
                 </TableRow>
             )
         });
-
-
-
+        
         const actions = [
             <FlatButton
                 label="Cancel"

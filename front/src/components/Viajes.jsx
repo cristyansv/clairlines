@@ -23,7 +23,7 @@ var style = {
 
 var titleStyle = {
     color: "white",
-    fontWeigth: 100,
+    fontWeight: 100,
     fontSize: "50px"
 };
 
@@ -41,7 +41,7 @@ class Viajes extends React.Component {
 
         this.state = {
             viajes: [],
-            open: true,
+            open: false,
             aeropuertos: [],
             tarifa: 0
         };
