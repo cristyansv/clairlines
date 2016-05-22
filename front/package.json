@@ -12,6 +12,7 @@
   "dependencies": {
     "babelify": "^7.3.0",
     "material-ui": "^0.15.0",
+    "momentjs": "^1.1.7",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",

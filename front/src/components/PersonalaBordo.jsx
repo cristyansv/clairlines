@@ -9,9 +9,21 @@ var http = require('../services/http');
 class PersonalaBordo extends React.Component {
 
     render() {
+        
+        var abordo = this.props.data.map(function (empleado) {
+            return (
+                <TableRow key={empleado.idempleado}>
+                    <TableRowColumn>{empleado.idempleado}</TableRowColumn>
+                    <TableRowColumn>{empleado.nombre} {empleado.apellido}</TableRowColumn>
+                    <TableRowColumn>{empleado.cargo}</TableRowColumn>
+                </TableRow>
+            )
+        });
+
+
         return(
-            <Table>
-                <TableHeader>
+            <Table selectable={false}>
+                <TableHeader adjustForCheckbox={false}>
                     <TableRow>
                         <TableHeaderColumn>ID</TableHeaderColumn>
                         <TableHeaderColumn>Name</TableHeaderColumn>
@@ -20,11 +32,7 @@ class PersonalaBordo extends React.Component {
                 </TableHeader>
 
                 <TableBody>
-                    <TableRow>
-                        <TableRowColumn>1</TableRowColumn>
-                        <TableRowColumn>John Smith</TableRowColumn>
-                        <TableRowColumn>Employed</TableRowColumn>
-                    </TableRow>
+                    {abordo}
                 </TableBody>
             </Table>
         )

@@ -31,6 +31,52 @@ router.post('/query', function (req, res) {
 });
 
 
+router.post('/nuevotrayecto', function (req, res) {
+
+
+    var data = req.body;
+
+
+    var consulta = `insert INTO Trayecto (idtrayecto, idavion, idviaje, horasalida, fechasalida, horallegada, fechallegada)`+
+    `VALUES ('${data.idtrayecto}', ${data.actualAvion}, ${data.actualViaje}, '${data.fechaSalida} ${data.horaSalida}', '${data.fechaSalida}', '${data.fechaLlegada} ${data.horaLlegada}', '${data.fechaLlegada}')`;
+
+
+    var empleados = "";
+
+    for(var i = 0; i<data.abordo.length; i++){
+        var str;
+        if(i == data.abordo.length-1){
+            str = `(${data.abordo[i].idempleado}, '${data.idtrayecto}')`;
+        }else{
+            str = `(${data.abordo[i].idempleado}, '${data.idtrayecto}'),`;
+        }
+        empleados+= str;
+    }
+    
+    
+    
+    var abordo = `insert into Personalabordo (idempleado, idtrayecto) VALUES ${empleados};`;
+
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            connection.query(abordo, function(err, rows) {
+                if(err){
+                    res.send(err);
+                }else {
+                    res.send(rows);
+                }
+            });
+
+        }
+    });
+
+});
+
+
 router.get("/getAviones", function (req, res) {
     connection.query("Select * from Avion", function(err, rows) {
         if(err){
@@ -43,7 +89,7 @@ router.get("/getAviones", function (req, res) {
 
 
 router.get("/getEmpleados", function (req, res) {
-    connection.query("Select * from Empleado", function(err, rows) {
+    connection.query("Select * from Empleado join Cargos on Empleado.idcargo = Cargos.idcargo", function(err, rows) {
         if(err){
             res.send(err);
         }else {
