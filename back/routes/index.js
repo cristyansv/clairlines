@@ -145,11 +145,11 @@ router.post('/nuevoPasajero', function (req, res) {
   var cedula = req.body.cedula;
 
 
-  console.log(nombre, cedula);
 
 
-  var consulta = "insert into Pasajero (ID_pasajero, Nombre, Cedula) values ("+id+","+nombre+","+cedula+")";
+  var consulta = "insert into Pasajero (Nombre, Cedula) values ('"+nombre+"','"+cedula+"')";
 
+    console.log(consulta);
 
   connection.query(consulta, function(err, rows) {
     if(err){

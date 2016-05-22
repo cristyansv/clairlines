@@ -25,7 +25,7 @@ var style = {
 
 var titleStyle = {
     color: "white",
-    fontWeigth: 100,
+    fontWeight: 100,
     fontSize: "50px"
 };
 
