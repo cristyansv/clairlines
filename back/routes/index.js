@@ -3,10 +3,10 @@ var router = express.Router();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : '207.223.165.157',
-  user     : 'clairlines',
-  password : '22clairlines',
-  database : 'clairlines'
+    host     : '207.223.165.157',
+    user     : 'clairlines',
+    password : '22clairlines',
+    database : 'clairlines'
 });
 
 
@@ -14,30 +14,30 @@ var connection = mysql.createConnection({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Express' });
 });
 
 router.post('/query', function (req, res) {
 
-  console.log(req.body.query);
+    console.log(req.body.query);
 
-  connection.query(req.body.query, function(err, rows) {
-      if(err){
-        res.send(err);
-      }else {
-        res.send(rows);
-      }
-  });
+    connection.query(req.body.query, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
 router.get("/getUserById/:id", function (req, res) {
-  connection.query("Select * from Pasajero where ID_pasajero = "+req.params.id, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
+    connection.query("Select * from Pasajero where ID_pasajero = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
 router.get("/getAviones", function (req, res) {
@@ -127,30 +127,28 @@ router.get("/getViajes", function (req, res) {
 
 
 router.get("/getEmployeeById/:id", function (req, res) {
-  connection.query("Select * from Empleado where ID_pasajero = "+req.params.id, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
+    connection.query("Select * from Empleado where ID_pasajero = "+req.params.id, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
-router.post('/nuevoEmpleado', function (req, res) {
+
+
+router.post('/nuevoPasajero', function (req, res) {
 
 
     var nombre = req.body.nombre;
     var cedula = req.body.cedula;
-    var apellido = req.body.apellido;
-    var cargo = req.body.cargo;
-    var tipo = req.body.tipo;
-    var categoria = req.body.categoria;
 
 
-    var consulta = "insert into Empleado (nombre, cedula, apellido, cargo, tipo, categoria) " +
-        "values ('"+nombre+"','"+cedula+"','"+apellido+"', "+cargo+", "+tipo+", "+categoria+")";
+    console.log(nombre, cedula);
 
-    console.log(consulta);
+
+    var consulta = "insert into Pasajero (ID_pasajero, Nombre, Cedula) values ("+id+","+nombre+","+cedula+")";
 
 
     connection.query(consulta, function(err, rows) {
@@ -165,56 +163,26 @@ router.post('/nuevoEmpleado', function (req, res) {
 
 
 
-module.exports = router;
-
-
-
-router.post('/nuevoPasajero', function (req, res) {
-
-
-  var nombre = req.body.cedula;
-  var cedula = req.body.nombre;
-
-
-  var consulta = "insert into Pasajero (nombre, cedula)" +  "values ('"+nombre+"','"+cedula+"')";
-
-    console.log(consulta);
-
-  connection.query(consulta, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
-});
-
-
-
-
-module.exports = router;
-
-
 router.post('/nuevoAvion', function (req, res) {
 
 
-  var nroasientos = req.body.nroasientos;
-  var disponibilidad = req.body.disponibilidad;
-  var modelo = req.body.modelo;
+    var nroasientos = req.body.nroasientos;
+    var disponibilidad = req.body.disponibilidad;
+    var modelo = req.body.modelo;
 
 
-  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+nroasientos+","+disponibilidad+",'"+modelo+"')";
+    var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+nroasientos+","+disponibilidad+",'"+modelo+"')";
 
     console.log(consulta);
 
 
-  connection.query(consulta, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
 
@@ -282,24 +250,33 @@ router.post('/activar', function (req, res) {
 
 
 
-module.exports = router;
-
 
 router.post('/nuevoEmpleado', function (req, res) {
 
 
-  var nombre = req.body.nombre;
-  var cedula = req.body.cedula;
-  var apellido = req.body.apellido;
-  var cargo = req.body.cargo;
-  var tipo = req.body.tipo;
-  var categoria = req.body.categoria;
+    var nombre = req.body.nombre;
+    var cedula = req.body.cedula;
+    var apellido = req.body.apellido;
+    var cargo = req.body.cargo;
+    var tipo = req.body.tipo;
+    var categoria = req.body.categoria;
 
 
-  console.log(nombre, cedula, apellido, cargo, tipo, categoria);
+    console.log(nombre, cedula, apellido, cargo, tipo, categoria);
 
 
-  var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) values ("+idempleado+", "+nombre+","+cedula+","+apellido+", "+cargo+", "+tipo+", "+categoria+")";
+    var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) values ("+idempleado+", "+nombre+","+cedula+","+apellido+", "+cargo+", "+tipo+", "+categoria+")";
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
 
 
 
@@ -311,21 +288,20 @@ router.post('/nuevoAeropuerto', function (req, res) {
     var ciudad = req.body.ciudad;
 
 
-  var consulta = "insert into Aeropuerto (idaeropuerto, nombreaeropuerto, ciudad) values ('"+id+"', '"+nombre+"','"+ciudad+"')";
+    var consulta = "insert into Aeropuerto (idaeropuerto, nombreaeropuerto, ciudad) values ('"+id+"', '"+nombre+"','"+ciudad+"')";
 
     console.log(consulta);
 
 
-  connection.query(consulta, function(err, rows) {
-    if(err){
-      res.send(err);
-    }else {
-      res.send(rows);
-    }
-  });
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
-module.exports = router;
 
 router.post('/nuevoPersonal_a_bordo', function (req, res) {
 
@@ -350,7 +326,6 @@ router.post('/nuevoPersonal_a_bordo', function (req, res) {
 });
 
 
-module.exports = router;
 
 router.post('/nuevoTiquete', function (req, res) {
 
@@ -378,7 +353,6 @@ router.post('/nuevoTiquete', function (req, res) {
 });
 
 
-module.exports = router;
 
 router.post('/nuevoTrayecto', function (req, res) {
 
@@ -437,7 +411,6 @@ router.post('/nuevoViaje', function (req, res) {
 });
 
 
-module.exports = router;
 
 
 router.get("/getEmpleadoById/:id", function (req, res) {
