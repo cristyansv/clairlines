@@ -3,7 +3,41 @@
  */
 
 import React from 'react';
+
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+
 var http = require('../services/http');
+
+
+var style = {
+    width: "700px",
+    marginLeft: "auto",
+    marginRight: "auto"
+};
+
+
+var titleStyle = {
+    color: "white",
+    fontWeigth: 100,
+    fontSize: "50px"
+};
+
+
+var containerStyle = {
+    padding: "10px"
+};
+
+
+var buttonStyle ={
+    marginTop: "20px",
+    marginRight: "20px",
+    width: "230px"
+};
+
+
 
 class Pasajeros extends React.Component {
 
@@ -29,18 +63,34 @@ class Pasajeros extends React.Component {
 
         var pasajeros = this.state.pasajeros.map(function (pasajero) {
             return (
-                <div>
-                    <p>Id: {pasajero.idpasajero}</p>
-                    <p>nombre: {empleado.nombre}</p>
-                    <p>cedula: {empleado.cedula}</p>
-                </div>
+                <TableRow>
+                    <TableRowColumn>{pasajero.idpasajero}</TableRowColumn>
+                    <TableRowColumn>{pasajero.nombre}</TableRowColumn>
+                    <TableRowColumn>{pasajero.cedula}</TableRowColumn>
+                </TableRow>
             )
         });
 
 
         return (
-            <div>
-                {pasajeros}
+            <div style={style}>
+                <h1 style={titleStyle}>Pasajeros</h1>
+                <Paper style={containerStyle} zDepth={2}>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHeaderColumn>Id</TableHeaderColumn>
+                                <TableHeaderColumn>Nombre</TableHeaderColumn>
+                                <TableHeaderColumn>Cedula</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {pasajeros}
+                        </TableBody>
+                    </Table>
+                </Paper>
+                <RaisedButton label="Agregar Pasajero" primary={true} style={buttonStyle} />
+                <RaisedButton label="Borrar Pasajero" secondary={true} style={buttonStyle} />
             </div>
         )
     }
