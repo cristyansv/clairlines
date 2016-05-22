@@ -10,7 +10,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 var http = require('../services/http');
 
 var style = {
-    width: "1000px",
+    width: "980px",
     marginLeft: "auto",
     marginRight: "auto"
 };
@@ -54,22 +54,22 @@ class Trayectos extends React.Component {
             return (
 
 
-                <div>
-                    <TableRow>{trayecto.idtrayecto}</TableRow>
-                    <TableRow>{trayecto.idavion}</TableRow>
-                    <TableRow>{trayecto.idviaje}</TableRow>
-                    <TableRow>{trayecto.horasalida}</TableRow>
-                    <TableRow>{trayecto.fechasalida}</TableRow>
-                    <TableRow>{trayecto.horallegada}</TableRow>
-                    <TableRow>{trayecto.fechallegada}</TableRow>
-                </div>
+                <TableRow>
+                    <TableRowColumn>{trayecto.idtrayecto}</TableRowColumn>
+                    <TableRowColumn>{trayecto.idavion}</TableRowColumn>
+                    <TableRowColumn>{trayecto.idviaje}</TableRowColumn>
+                    <TableRowColumn>{trayecto.horasalida}</TableRowColumn>
+                    <TableRowColumn>{trayecto.fechasalida}</TableRowColumn>
+                    <TableRowColumn>{trayecto.horallegada}</TableRowColumn>
+                    <TableRowColumn>{trayecto.fechallegada}</TableRowColumn>
+                </TableRow>
             )
         });
 
 
         return (
             <div style={style}>
-                <h1 style={titleStyle}>Pasajeros</h1>
+                <h1 style={titleStyle}>Trayectos</h1>
                 <Paper style={containerStyle} zDepth={2}>
                     <Table>
                         <TableHeader>

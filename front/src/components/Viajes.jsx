@@ -66,7 +66,7 @@ class Viajes extends React.Component {
 
         return (
             <div style={style}>
-                <h1 style={titleStyle}>Pasajeros</h1>
+                <h1 style={titleStyle}>Viajes</h1>
                 <Paper style={containerStyle} zDepth={2}>
                     <Table>
                         <TableHeader>
