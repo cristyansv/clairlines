@@ -170,7 +170,7 @@ class Pasajeros extends React.Component {
             this.selected = ids;
 
             this.setState({
-                pasajeros: cloneState,
+                pasajeros: cloneState
             });
 
         }
