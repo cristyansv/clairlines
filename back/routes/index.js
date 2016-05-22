@@ -267,12 +267,11 @@ router.post('/nuevoEmpleado', function (req, res) {
   var tipo = req.body.tipo;
   var categoria = req.body.categoria;
 
-  var id = 99;
 
-  console.log(nombre, cedula, apellido, cargo, tipo, categoria);
+  var consulta = "insert into Empleado (nombre, cedula, apellido, cargo, tipo, categoria) " +
+      "values ('"+nombre+"','"+cedula+"','"+apellido+"', "+cargo+", "+tipo+", "+categoria+")";
 
-
-  var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) values ("+idempleado+", "+nombre+","+cedula+","+apellido+", "+cargo+", "+tipo+", "+categoria+")";
+    console.log(consulta);
 
 
   connection.query(consulta, function(err, rows) {

@@ -1,6 +1,10 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
@@ -29,7 +33,7 @@ var containerStyle = {
 var buttonStyle ={
     marginTop: "20px",
     marginRigth:"20px",
-    width: "170px"
+    width: "200px"
 };
 
 
@@ -38,43 +42,212 @@ class Empleados extends React.Component {
     constructor(){
         super();
 
+        this.selected = [];
+
         this.state = {
-            empleados: []
+            empleados: [],
+            open: false
         };
 
+
+        this.newCedula = "";
+        this.newNombre = "";
+        this.newApellido = "";
+        this.newCargo = 0;
+        this.newTipo = 0;
+        this.newCategoria = 0;
+
+        this.handleClose = this.handleClose.bind(this);
+        this.onClick = this.onClick.bind(this);
+        this.onChangeCedula = this.onChangeCedula.bind(this);
+        this.onChangeNombre = this.onChangeNombre.bind(this);
+        this.onChangeApellido = this.onChangeApellido.bind(this);
+        this.onChangeCargo = this.onChangeCargo.bind(this);
+        this.onChangeTipo = this.onChangeTipo.bind(this);
+        this.onChangeCategoria = this.onChangeCategoria.bind(this);
+        this.fetchEmpleados = this.fetchEmpleados.bind(this);
+
+        this.agregarEmpleado = this.agregarEmpleado.bind(this);
+        this.selectRow = this.selectRow.bind(this);
+
+
+        this.fetchEmpleados();
+    }
+
+    handleClose(){
+        this.setState({
+            open:false,
+            cedula: "",
+            nombre: "",
+            apellido: "",
+            cargo: 0,
+            tipo: 0,
+            categoria: 0
+        })
+
+    }
+
+    fetchEmpleados(){
         var empleadosFind = http.get('/getEmpleados');
 
         empleadosFind.then(function (data) {
+
+            console.log(data);
+
             this.setState({
-                empleados: data
+                empleados: data.map(function (empleado) {
+                    return {
+                        empleado: empleado,
+                        selected: false
+                    }
+                }),
+                open: false
             });
         }.bind(this));
+    }
+
+    agregarEmpleado(){
+
+        var cedula = this.state.cedula;
+        var nombre = this.state.nombre;
+        var apellido = this.state.apellido;
+        var cargo = this.state.cargo;
+        var tipo = this.state.tipo;
+        var categoria = this.state.categoria;
+
+
+        var nuevoEmpleado = http.post('/nuevoEmpleado', {
+            cedula: cedula,
+            nombre: nombre,
+            apellido: apellido,
+            cargo: cargo,
+            tipo: tipo,
+            categoria: categoria
+        });
+
+        this.handleClose();
+
+        nuevoEmpleado.then(function (data) {
+            this.fetchEmpleados();
+        }.bind(this))
 
 
     }
 
+    onClick(){
+        this.setState({
+            empleados: this.state.empleados,
+            open:true
+        })
+    }
+
+    onChangeCedula(e){
+        this.setState({
+            cedula: e.target.value
+        })
+    }
+
+    onChangeNombre(e){
+        this.setState({
+            nombre: e.target.value
+        });
+    }
+
+    onChangeApellido(e){
+        this.setState({
+            apellido: e.target.value
+        });
+    }
+
+    onChangeCargo(e){
+        this.setState({
+            cargo: e.target.value
+        });
+    }
+
+    onChangeTipo(e){
+        this.setState({
+            tipo: e.target.value
+        });
+    }
+
+    onChangeCategoria(e){
+        this.setState({
+            categoria: e.target.value
+        });
+    }
+
+    selectRow(data){
+        if(data == 'none'){
+            this.setState({
+                selectEmpleados: []
+            })
+        }else if(data == 'all'){
+
+        }else if(data.length >0){
+
+
+            var ids = [];
+
+            var cloneState = this.state.empleados.slice();
+
+            data.forEach(function (key) {
+                cloneState[key].selected = true;
+                ids.push(cloneState[key].empleado.idempleado);
+            }.bind(this));
+
+            this.selected = ids;
+
+            this.setState({
+                empleados: cloneState,
+            });
+
+        }
+
+    }
+
+
+
     render() {
 
-        var empleados= this.state.empleados.map(function (empleado) {
+        var empleados= this.state.empleados.map(function (data) {
+            console.log(data);
             return (
-                <TableRow key={empleado.idempleado}>
-                    <TableRowColumn>{empleado.idempleado}</TableRowColumn>
-                    <TableRowColumn>{empleado.cedula}</TableRowColumn>
-                    <TableRowColumn>{empleado.nombre}</TableRowColumn>
-                    <TableRowColumn>{empleado.apellido}</TableRowColumn>
-                    <TableRowColumn>{empleado.cargo}</TableRowColumn>
-                    <TableRowColumn>{empleado.tipo}</TableRowColumn>
-                    <TableRowColumn>{empleado.categoria}</TableRowColumn>
+                <TableRow key={data.empleado.idempleado} selected={data.selected}>
+                    <TableRowColumn>{data.empleado.idempleado}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.cedula}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.nombre}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.apellido}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.cargo}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.tipo}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.categoria}</TableRowColumn>
                 </TableRow>
             )
         });
 
 
+
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+                label="Agregar"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={this.agregarEmpleado}
+            />
+        ];
+
+
         return (
+            <div>
             <div style={style}>
                 <h1 style={titleStyle}>Empleados</h1>
                 <Paper style={containerStyle} zDepth={2}>
-                    <Table>
+                    <Table multiSelectable={true} onRowSelection={this.selectRow}>
                         <TableHeader>
                             <TableRow>
                                 <TableHeaderColumn>ID</TableHeaderColumn>
@@ -91,8 +264,40 @@ class Empleados extends React.Component {
                         </TableBody>
                     </Table>
                 </Paper>
-                <RaisedButton label="Agregar Empleado" primary={true} style={buttonStyle} />
-                <RaisedButton label="Borrar Empleado" secondary={true} style={buttonStyle} />
+                <RaisedButton onClick={this.onClick} label="Agregar Empleado" primary={true} style={buttonStyle} />
+            </div>
+                <Dialog
+                title="Agregar Nuevo Empleado"
+                actions={actions}
+                modal={false}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                 >
+                <TextField
+                    floatingLabelText="Cédula"
+                    onChange={this.onChangeCedula}
+                />
+                 <TextField
+                    floatingLabelText="Nombre"
+                    onChange={this.onChangeNombre}
+                  />
+                    <TextField
+                        floatingLabelText="Apellido"
+                        onChange={this.onChangeApellido}
+                    />
+                    <TextField
+                        floatingLabelText="Cargo"
+                        onChange={this.onChangeCargo}
+                    />
+                    <TextField
+                        floatingLabelText="Tipo"
+                        onChange={this.onChangeTipo}
+                    />
+                    <TextField
+                        floatingLabelText="Categoría"
+                        onChange={this.onChangeCategoria}
+                    />
+                </Dialog>
             </div>
         )
     }
