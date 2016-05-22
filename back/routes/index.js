@@ -175,7 +175,9 @@ router.post('/nuevoAvion', function (req, res) {
   var modelo = req.body.modelo;
 
 
-  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+nroasientos+","+disponibilidad+","+modelo+")";
+  var consulta = "insert into Avion  (nroasientos, disponibilidad, modelo) values ("+nroasientos+","+disponibilidad+",'"+modelo+"')";
+
+    console.log(consulta);
 
 
   connection.query(consulta, function(err, rows) {
@@ -185,6 +187,68 @@ router.post('/nuevoAvion', function (req, res) {
       res.send(rows);
     }
   });
+});
+
+
+router.post('/deshabilitar', function (req, res) {
+
+    console.log(req.body.aviones);
+
+    var aviones = req.body.aviones;
+
+    var string = "";
+
+    for(var i=0; i<aviones.length; i++){
+        if(i==aviones.length-1){
+            string+=aviones[i];
+        }else{
+            string+=(aviones[i]+",");
+        }
+    }
+
+    var consulta = "UPDATE Avion set disponibilidad=0 where idavion in("+string+");";
+
+    console.log(consulta);
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
+router.post('/activar', function (req, res) {
+
+    console.log(req.body.aviones);
+
+    var aviones = req.body.aviones;
+
+    var string = "";
+
+    for(var i=0; i<aviones.length; i++){
+        if(i==aviones.length-1){
+            string+=aviones[i];
+        }else{
+            string+=(aviones[i]+",");
+        }
+    }
+
+    var consulta = "UPDATE Avion set disponibilidad=1 where idavion in("+string+");";
+
+    console.log(consulta);
+
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
 });
 
 
