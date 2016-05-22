@@ -394,25 +394,21 @@ router.post('/nuevoTrayecto', function (req, res) {
 });
 
 
-module.exports = router;
 
 
 router.post('/nuevoViaje', function (req, res) {
 
 
-    var idviaje = req.body.idviaje;
-    var idaeropuertoorigen= req.body.idaeropuertoorigen;
-    var idaeropuertodestino= req.body.idaeropuertodestino;
-    var tarifa= req.body.tarifa;
 
+    var origen = req.body.origen;
+    var destino = req.body.destino;
+    var tarifa = req.body.tarifa;
 
+    console.log(origen, destino, tarifa);
 
+    var consulta = `insert into Viaje (idaeropuertoorigen, idaeropuertodestino, tarifa) values ('${origen}', '${destino}', '${tarifa}')`;
 
-
-    console.log(idviaje,idaeropuertoorigen,idaeropuertodestino,tarifa);
-
-
-    var consulta = "insert into Viaje (idviaje, idaeropuertoorigen, idaeropuertodestino, tarifa) values ("+idviaje+", "+idaeropuertoorigen+", "+idaeropuertoorigen+",, "+tarifa+")";
+    console.log(consulta);
 
 
     connection.query(consulta, function(err, rows) {
@@ -656,3 +652,5 @@ router.get("/getTarifaByIdviaje/:id", function (req, res) {
         }
     });
 });
+
+module.exports = router;
