@@ -65,7 +65,7 @@ class Aeropuertos extends React.Component {
 
         return (
             <div style={style}>
-                <h1 style={titleStyle}>Aviones</h1>
+                <h1 style={titleStyle}>Aeropuertos</h1>
                 <Paper containerStyle={containerStyle} zDepth={2}>
                     <Table>
                         <TableHeader>
