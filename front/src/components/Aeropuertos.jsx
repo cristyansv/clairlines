@@ -54,7 +54,7 @@ class Aeropuertos extends React.Component {
 
         var aeropuertos = this.state.aeropuertos.map(function (aeropuerto) {
             return (
-                <TableRow>
+                <TableRow key={aeropuerto.idaeropuerto}>
                     <TableRowColumn>{aeropuerto.idaeropuerto}</TableRowColumn>
                     <TableRowColumn>{aeropuerto.nombreaeropuerto}</TableRowColumn>
                     <TableRowColumn>{aeropuerto.ciudad}</TableRowColumn>
