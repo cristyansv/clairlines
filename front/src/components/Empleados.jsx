@@ -2,13 +2,13 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import {Table, TableBody, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 var http = require('../services/http');
 
 
 var style = {
-    width: "700px",
+    width: "850px",
     marginLeft: "auto",
     marginRight: "auto"
 };
@@ -23,6 +23,13 @@ var titleStyle = {
 
 var containerStyle = {
     padding: "10px"
+};
+
+
+var buttonStyle ={
+    marginTop: "20px",
+    marginRigth:"20px",
+    width: "170px"
 };
 
 
@@ -50,22 +57,42 @@ class Empleados extends React.Component {
 
         var empleados= this.state.empleados.map(function (empleado) {
             return (
-                <div>
-                    <p>Id: {empleado.idempleado}</p>
-                    <p>cedula: {empleado.cedula}</p>
-                    <p>nombre: {empleado.nombre}</p>
-                    <p>apellido: {empleado.apellido}</p>
-                    <p>cargo: {empleado.cargo}</p>
-                    <p>tipo: {empleado.tipo}</p>
-                    <p>categoria: {empleado.categoria}</p>
-                </div>
+                <TableRow>
+                    <TableRowColumn>{empleado.idempleado}</TableRowColumn>
+                    <TableRowColumn>{empleado.cedula}</TableRowColumn>
+                    <TableRowColumn>{empleado.nombre}</TableRowColumn>
+                    <TableRowColumn>{empleado.apellido}</TableRowColumn>
+                    <TableRowColumn>{empleado.cargo}</TableRowColumn>
+                    <TableRowColumn>{empleado.tipo}</TableRowColumn>
+                    <TableRowColumn>{empleado.categoria}</TableRowColumn>
+                </TableRow>
             )
         });
 
 
         return (
-            <div>
-                {empleados}
+            <div style={style}>
+                <h1 style={titleStyle}>Empleados</h1>
+                <Paper style={containerStyle} zDepth={2}>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHeaderColumn>Id</TableHeaderColumn>
+                                <TableHeaderColumn>Cedula</TableHeaderColumn>
+                                <TableHeaderColumn>Nombre</TableHeaderColumn>
+                                <TableHeaderColumn>Apellido</TableHeaderColumn>
+                                <TableHeaderColumn>Cargo</TableHeaderColumn>
+                                <TableHeaderColumn>Tipo</TableHeaderColumn>
+                                <TableHeaderColumn>Categoria</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                             {empleados}
+                        </TableBody>
+                    </Table>
+                </Paper>
+                <RaisedButton label="Agregar Empleado" primary={true} style={buttonStyle} />
+                <RaisedButton label="Borrar Empleado" secondary={true} style={buttonStyle} />
             </div>
         )
     }
