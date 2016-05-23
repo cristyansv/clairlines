@@ -53,18 +53,14 @@ class Empleados extends React.Component {
         this.newCedula = "";
         this.newNombre = "";
         this.newApellido = "";
-        this.newCargo = 0;
-        this.newTipo = 0;
-        this.newCategoria = 0;
+        this.newIdcargo = 0;
 
         this.handleClose = this.handleClose.bind(this);
         this.onClick = this.onClick.bind(this);
         this.onChangeCedula = this.onChangeCedula.bind(this);
         this.onChangeNombre = this.onChangeNombre.bind(this);
         this.onChangeApellido = this.onChangeApellido.bind(this);
-        this.onChangeCargo = this.onChangeCargo.bind(this);
-        this.onChangeTipo = this.onChangeTipo.bind(this);
-        this.onChangeCategoria = this.onChangeCategoria.bind(this);
+        this.onChangeIdcargo = this.onChangeIdcargo.bind(this);
         this.fetchEmpleados = this.fetchEmpleados.bind(this);
 
         this.agregarEmpleado = this.agregarEmpleado.bind(this);
@@ -80,9 +76,7 @@ class Empleados extends React.Component {
             cedula: "",
             nombre: "",
             apellido: "",
-            cargo: 0,
-            tipo: 0,
-            categoria: 0
+            idcargo: 0
         })
 
     }
@@ -111,18 +105,14 @@ class Empleados extends React.Component {
         var cedula = this.state.cedula;
         var nombre = this.state.nombre;
         var apellido = this.state.apellido;
-        var cargo = this.state.cargo;
-        var tipo = this.state.tipo;
-        var categoria = this.state.categoria;
+        var idcargo = this.state.idcargo;
 
 
         var nuevoEmpleado = http.post('/nuevoEmpleado', {
             cedula: cedula,
             nombre: nombre,
             apellido: apellido,
-            cargo: cargo,
-            tipo: tipo,
-            categoria: categoria
+            idcargo: idcargo
         });
 
         this.handleClose();
@@ -159,23 +149,12 @@ class Empleados extends React.Component {
         });
     }
 
-    onChangeCargo(e){
+    onChangeIdcargo(e){
         this.setState({
-            cargo: e.target.value
+            idcargo: e.target.value
         });
     }
 
-    onChangeTipo(e){
-        this.setState({
-            tipo: e.target.value
-        });
-    }
-
-    onChangeCategoria(e){
-        this.setState({
-            categoria: e.target.value
-        });
-    }
 
     selectRow(data){
         if(data == 'none'){
@@ -218,9 +197,7 @@ class Empleados extends React.Component {
                     <TableRowColumn>{data.empleado.cedula}</TableRowColumn>
                     <TableRowColumn>{data.empleado.nombre}</TableRowColumn>
                     <TableRowColumn>{data.empleado.apellido}</TableRowColumn>
-                    <TableRowColumn>{data.empleado.cargo}</TableRowColumn>
-                    <TableRowColumn>{data.empleado.tipo}</TableRowColumn>
-                    <TableRowColumn>{data.empleado.categoria}</TableRowColumn>
+                    <TableRowColumn>{data.empleado.idcargo}</TableRowColumn>
                 </TableRow>
             )
         });
@@ -253,8 +230,6 @@ class Empleados extends React.Component {
                                 <TableHeaderColumn>Nombre</TableHeaderColumn>
                                 <TableHeaderColumn>Apellido</TableHeaderColumn>
                                 <TableHeaderColumn>Cargo</TableHeaderColumn>
-                                <TableHeaderColumn>Tipo</TableHeaderColumn>
-                                <TableHeaderColumn>Categoría</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -285,15 +260,7 @@ class Empleados extends React.Component {
                     />
                     <TextField
                         floatingLabelText="Cargo"
-                        onChange={this.onChangeCargo}
-                    />
-                    <TextField
-                        floatingLabelText="Tipo"
-                        onChange={this.onChangeTipo}
-                    />
-                    <TextField
-                        floatingLabelText="Categoría"
-                        onChange={this.onChangeCategoria}
+                        onChange={this.onChangeIdcargo}
                     />
                 </Dialog>
             </div>

@@ -291,19 +291,16 @@ module.exports = router;
 router.post('/nuevoEmpleado', function (req, res) {
 
 
-  var nombre = req.body.nombre;
-  var cedula = req.body.cedula;
-  var apellido = req.body.apellido;
-  var cargo = req.body.cargo;
-  var tipo = req.body.tipo;
-  var categoria = req.body.categoria;
+    var cedula = req.body.cedula;
+    var nombre = req.body.nombre;
+     var apellido = req.body.apellido;
+     var idcargo = req.body.idcargo;
 
 
-  console.log(nombre, cedula, apellido, cargo, tipo, categoria);
+  var consulta = "insert into Empleado (cedula, nombre, apellido, idcargo) values ("+cedula+",'"+nombre+"','"+apellido+"', "+idcargo+")";
 
 
-  var consulta = "insert into Empleado (idempleado, nombre, cedula, apellido, cargo, tipo, categoria) values ("+idempleado+", "+nombre+","+cedula+","+apellido+", "+cargo+", "+tipo+", "+categoria+")";
-
+    console.log(consulta);
 
   connection.query(consulta, function(err, rows) {
     if(err){
