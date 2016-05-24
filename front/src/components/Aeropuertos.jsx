@@ -59,6 +59,9 @@ class Aeropuertos extends React.Component {
         var aeropuertosFind = http.get('/getAeropuertos');
 
         aeropuertosFind.then(function (data) {
+
+            console.log(data);
+
             this.setState({
                 aeropuertos: data
             });

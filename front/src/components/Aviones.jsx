@@ -78,8 +78,12 @@ class Aviones extends React.Component {
         var avionesFind = http.get('/getAviones');
 
         avionesFind.then(function (data) {
+
+            console.log(data);
             this.setState({
                 aviones: data.map(function (avion) {
+
+
                     return {
                         avion: avion,
                         selected: false
