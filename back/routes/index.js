@@ -30,6 +30,129 @@ router.post('/query', function (req, res) {
   });
 });
 
+function generateId() {
+    return "CLA" + Math.random().toString(36).slice(-8);
+}
+
+router.post('/nuevoTicket', function (req, res) {
+
+    var nombre = req.body.nombre;
+    var cedula = req.body.cedula;
+    var ida = req.body.ida;
+    var regreso = req.body.regreso;
+
+    var pasajero = `insert INTO Pasajero (nombre, cedula) VALUES ('${nombre}', ${cedula})`;
+
+    connection.query(pasajero, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            var ticketId1 = generateId();
+            var ticketId2 = generateId();
+
+            var ticketQuery = `insert into Tiquete (idtiquete, idtrayecto, idpasajero) VALUES ('${ticketId1}', '${ida}', ${rows.insertId}), ('${ticketId2}', '${regreso}', ${rows.insertId})`;
+
+            connection.query(ticketQuery, function(err, rows) {
+                if(err){
+                    res.send(err);
+                }else {
+                    res.send({ida: ticketId1, regreso:ticketId2});
+                }
+            });
+        }
+    });
+
+});
+
+router.post('/viewTicket', function (req, res) {
+
+
+    var ida = req.body.ida;
+    var regreso = req.body.regreso;
+
+    console.log(req.body);
+
+    var consulta =  `SELECT * 
+                    from Tiquete tq 
+                    JOIN Trayecto ty 
+                    on tq.idtrayecto = ty.idtrayecto 
+                    JOIN Pasajero p 
+                    on tq.idpasajero = p.idpasajero 
+                    join Avion a 
+                    on ty.idavion = a.idavion 
+                    where idtiquete = '${ida}' or idtiquete = '${regreso}'`;
+
+    console.log(consulta);
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows)
+        }
+    });
+
+    // res.send({a:10});
+
+});
+
+
+router.post('/findVuelo', function (req, res) {
+
+
+    var origen = req.body.origen;
+    var destino = req.body.destino;
+    var fecha = req.body.fecha;
+
+
+    var consulta =  "SELECT * " +
+        "from Viaje v " +
+        "JOIN Trayecto t "+
+        "ON v.idviaje = t.idviaje "+
+        `where idaeropuertoorigen = '${origen}'` +
+        ` and idaeropuertodestino = '${destino}'` +
+        ` and t.fechasalida = '${fecha}'`;
+
+    console.log(consulta);
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows)
+        }
+    });
+
+});
+
+router.post('/findVuelo', function (req, res) {
+
+
+    var origen = req.body.origen;
+    var destino = req.body.destino;
+    var fecha = req.body.fecha;
+
+
+    var consulta =  "SELECT * " +
+                    "from Viaje v " +
+                    "JOIN Trayecto t "+
+                    "ON v.idviaje = t.idviaje "+
+                    `where idaeropuertoorigen = '${origen}'` +
+                    ` and idaeropuertodestino = '${destino}'` +
+                    ` and t.fechasalida = '${fecha}'`;
+
+    console.log(consulta);
+
+    connection.query(consulta, function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+
+});
+
 
 router.post('/nuevotrayecto', function (req, res) {
 
@@ -52,12 +175,8 @@ router.post('/nuevotrayecto', function (req, res) {
         }
         empleados+= str;
     }
-    
-    
-    
+
     var abordo = `insert into Personalabordo (idempleado, idtrayecto) VALUES ${empleados};`;
-
-
 
     connection.query(consulta, function(err, rows) {
         if(err){

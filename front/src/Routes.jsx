@@ -15,6 +15,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import NuevoTrayecto from './components/NuevoTrayecto.jsx';
+import BuscarVuelos from './components/BuscarVuelos.jsx';
+import ViewTicket from './components/ViewTicket.jsx';
 
 import Bar from './components/Bar.jsx';
 
@@ -33,6 +35,8 @@ var Routes = (
                 <Route path="/tiquetes" component={Tiquetes}/>
                 <Route path="/trayectos" component={Trayectos}/>
                 <Route path="/nuevotrayecto" component={NuevoTrayecto} />
+                <Route path="/buscarvuelos/:origen/:destino/:inicial/:final" component={BuscarVuelos} />
+                <Route path="/ticket/:ida/:regreso" component={ViewTicket} />
             </Router>
         </div>
     </MuiThemeProvider>

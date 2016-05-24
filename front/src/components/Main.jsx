@@ -2,7 +2,11 @@ import React from 'react';
 
 var Main = React.createClass({
     render: function () {
-        return (<h1>hi</h1>)
+        return (
+            <div>
+                <h1>Buscar Vuelos</h1>
+            </div>
+        )
     }
 });
 

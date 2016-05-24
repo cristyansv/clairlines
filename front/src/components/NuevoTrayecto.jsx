@@ -19,7 +19,6 @@ const containerStyle = {
     marginRight: 'auto',
     marginLeft: 'auto',
     marginBottom: "50px"
-
 };
 
 const paperStyle ={
