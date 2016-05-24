@@ -37,7 +37,7 @@ router.post('/nuevotrayecto', function (req, res) {
     var data = req.body;
 
 
-    var consulta = `insert INTO Trayecto (idtrayecto, idavion, idviaje, horasalida, fechasalida, horallegada, fechallegada)`+
+    var consulta = `insert INTO Trayecto (idtrayecto, (SELECT modelo FROM Avion JOIN Trayecto ON Trayecto.idavion = Avion.idavion), idviaje, horasalida, fechasalida, horallegada, fechallegada)`+
     `VALUES ('${data.idtrayecto}', ${data.actualAvion}, ${data.actualViaje}, '${data.fechaSalida} ${data.horaSalida}', '${data.fechaSalida}', '${data.fechaLlegada} ${data.horaLlegada}', '${data.fechaLlegada}')`;
 
 
@@ -86,6 +86,21 @@ router.get("/getAviones", function (req, res) {
         }
     });
 });
+
+
+
+
+router.get("/getModeloAvion", function (req, res) {
+    connection.query("Select modelo from Avion", function(err, rows) {
+        if(err){
+            res.send(err);
+        }else {
+            res.send(rows);
+        }
+    });
+});
+
+
 
 
 router.get("/getEmpleados", function (req, res) {

@@ -145,7 +145,7 @@ class NuevoTrayecto extends React.Component {
             });
         }.bind(this));
 
-        var avionesFind = http.get('/getaviones');
+        var avionesFind = http.get('/getModeloAvion');
 
         avionesFind.then(function (data) {
             this.setState({
@@ -184,7 +184,7 @@ class NuevoTrayecto extends React.Component {
         });
         
         const aviones = this.state.aviones.map(function (avion) {
-            return ( <MenuItem key={avion.idavion} value={avion.idavion} primaryText={avion.modelo} /> );
+            return ( <MenuItem key={avion.idavion} value={avion.idavion} primaryText={avion.idavion} /> );
         });
 
         const viajes = this.state.viajes.map(function (viaje) {
