@@ -63,8 +63,8 @@ class Pasajeros extends React.Component {
 
         this.handleClose = this.handleClose.bind(this);
         this.onClick = this.onClick.bind(this);
-        this.onChangeCedula = this.onChangeCedula.bind(this);
         this.onChangeNombre = this.onChangeNombre.bind(this);
+        this.onChangeCedula = this.onChangeCedula.bind(this);
         this.fetchPasajeros = this.fetchPasajeros.bind(this);
         this.agregarPasajero = this.agregarPasajero.bind(this);
         this.selectRow = this.selectRow.bind(this);
@@ -76,9 +76,8 @@ class Pasajeros extends React.Component {
     handleClose(){
         this.setState({
             open:false,
-            cedula: "",
             nombre: "",
-
+            cedula: ""
         })
 
     }
@@ -110,13 +109,15 @@ class Pasajeros extends React.Component {
 
     agregarPasajero(){
 
-        var cedula = this.state.cedula;
+
         var nombre = this.state.nombre;
+        var cedula = this.state.cedula;
 
 
         var nuevoPasajero = http.post('/nuevoPasajero', {
-            cedula: cedula,
-            nombre: nombre
+            nombre: nombre,
+            cedula: cedula
+
         });
 
         this.handleClose();
