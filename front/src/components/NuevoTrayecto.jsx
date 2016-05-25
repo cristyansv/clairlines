@@ -144,7 +144,7 @@ class NuevoTrayecto extends React.Component {
             });
         }.bind(this));
 
-        var avionesFind = http.get('/getModeloAvion');
+        var avionesFind = http.get('/getaviones');
 
         avionesFind.then(function (data) {
             this.setState({
