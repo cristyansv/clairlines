@@ -337,7 +337,6 @@ router.post('/nuevoPasajero', function (req, res) {
   });
 });
 
-module.exports = router;
 
 
 router.post('/nuevoAvion', function (req, res) {
@@ -838,3 +837,12 @@ router.get("/getTarifaByIdviaje/:id", function (req, res) {
         }
     });
 });
+
+
+router.get('/*/', function (req, res) {
+    res.sendFile('index.html', {root:'../front/public'});
+});
+
+
+
+module.exports = router;

@@ -16,7 +16,7 @@ import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import Moment from 'momentjs';
 import TextField from 'material-ui/TextField';
-import {hashHistory} from 'react-router';
+import {browserHistory} from 'react-router';
 
 var http = require('../services/http');
 
@@ -131,7 +131,7 @@ class Index extends React.Component {
         });
 
         send.then(function (data) {
-            hashHistory.push(`/ticket/${data.ida}/${data.regreso}`);
+            browserHistory.push(`/ticket/${data.ida}/${data.regreso}`);
         })
 
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 import Index from './components/Index.jsx';
 import Aviones from './components/Aviones.jsx';
 import Empleados from './components/Empleados.jsx';
@@ -25,7 +25,7 @@ var Routes = (
     <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
             <Bar />
-            <Router history={hashHistory}>
+            <Router history={browserHistory}>
                 <Route path="/" component={Index}/>
                 <Route path="/aviones" component={Aviones}/>
                 <Route path="/empleados" component={Empleados}/>
