@@ -72,22 +72,30 @@ router.post('/viewTicket', function (req, res) {
 
     console.log(req.body);
 
-    var consulta =  `SELECT * 
+    var consulta =  `select modelo, idaeropuertoorigen, idaeropuertodestino, ar.ciudad as origenCiudad, ar.nombreaeropuerto as origenAeropuerto, aw.ciudad as destinoCiudad, aw.nombreaeropuerto as destinoAeropuerto, fechasalida, fechallegada, horallegada, horasalida, idtiquete, tq.idtrayecto, p.cedula, p.nombre
                     from Tiquete tq 
                     JOIN Trayecto ty 
                     on tq.idtrayecto = ty.idtrayecto 
                     JOIN Pasajero p 
                     on tq.idpasajero = p.idpasajero 
                     join Avion a 
-                    on ty.idavion = a.idavion 
+                    on ty.idavion = a.idavion
+                    join Viaje v
+                    on ty.idviaje = v.idviaje
+                    join Aeropuerto ar
+                    on v.idaeropuertoorigen = ar.idaeropuerto
+                    join Aeropuerto aw
+                    on v.idaeropuertodestino = aw.idaeropuerto 
                     where idtiquete = '${ida}' or idtiquete = '${regreso}'`;
 
     console.log(consulta);
 
     connection.query(consulta, function(err, rows) {
         if(err){
+            console.log(err);
             res.send(err);
         }else {
+            console.log(rows);
             res.send(rows)
         }
     });
