@@ -183,14 +183,14 @@ class NuevoTrayecto extends React.Component {
         });
         
         const aviones = this.state.aviones.map(function (avion) {
-            return ( <MenuItem key={avion.idavion} value={avion.idavion} primaryText={avion.idavion} /> );
+            return ( <MenuItem key={avion.idavion} value={avion.idavion} primaryText={avion.modelo} /> );
         });
 
         const viajes = this.state.viajes.map(function (viaje) {
 
             var via = viaje.idaeropuertoorigen + " - " + viaje.idaeropuertodestino;
 
-            return ( <MenuItem key={viaje.idviaje} value={viaje.idviaje} primaryText={via} /> );
+            return ( <MenuItem key={viaje.idviaje} value={viaje.idviaje} primaryText={via} /> );''
         });
 
         return (
